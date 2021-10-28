@@ -2,7 +2,7 @@
 
 * Tibia for Android and other Unity platforms
 
-* Web game similar to Tibia (Magic Level v0.0.3)
+* Web game similar to Tibia (Magic Level v0.0.4)
 
 * Motivation: perform a multiplatform Tibia
 
