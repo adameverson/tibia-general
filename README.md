@@ -2,7 +2,7 @@
 
 * Tibia for Android and other Unity platforms
 
-* Cross-platform game similar to Tibia (Magic Level v0.0.4)
+* Cross-platform game similar to Tibia (Magic Level v0.0.5)
 
 * Motivation: perform a multiplatform Tibia
 

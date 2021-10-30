@@ -1,5 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp.dll:
+    - ColorLogo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -44,15 +46,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 2320}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2734}
     - Class: 114
-      Script: {instanceID: 2858}
+      Script: {instanceID: 2896}
     - Class: 114
-      Script: {instanceID: 3108}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3348}
+      Script: {instanceID: 3386}
+    - Class: 114
+      Script: {instanceID: 20508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -592,7 +596,13 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: e38e72edb407a391bb6fb18a24337623
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColorLogo
   platform: 13
   scenePathNames:
   - Assets/MagicLevel.unity
-  playerPath: D:/Documentos/Unity/apks/MagicLevel_v0_0_4.apk
+  playerPath: D:/Documentos/Unity/apks/MagicLevel_v0_0_5.apk
