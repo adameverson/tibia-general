@@ -36,7 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\ColorLogo.cs" />
+     <Compile Include="Assets\scripts\main.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Unity\2020.3.21f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

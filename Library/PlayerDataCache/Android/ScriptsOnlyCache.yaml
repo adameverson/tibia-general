@@ -1,7 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - ColorLogo
+    - main
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -46,17 +46,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 2320}
+      Script: {instanceID: 2282}
     - Class: 114
-      Script: {instanceID: 2734}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2896}
+      Script: {instanceID: 2858}
     - Class: 114
-      Script: {instanceID: 3146}
+      Script: {instanceID: 3108}
     - Class: 114
-      Script: {instanceID: 3386}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 20508}
+      Script: {instanceID: 3858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,6 +376,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: f9295f8d980ca1e57016ba2b18b8d511
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: main
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.Advertisements.dll
     namespaceName: UnityEngine.Advertisements.Utilities
@@ -596,13 +602,7 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: e38e72edb407a391bb6fb18a24337623
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ColorLogo
   platform: 13
   scenePathNames:
   - Assets/MagicLevel.unity
-  playerPath: D:/Documentos/Unity/apks/MagicLevel_v0_0_5.apk
+  playerPath: D:/Documentos/Unity/apks/MagicLevel_v0_1_8.apk
