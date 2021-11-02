@@ -6,6 +6,10 @@
 
 * Motivation: perform a multiplatform Tibia
 
+# DEPLOY
+
+http://magiclevel.ml
+
 # Tibia
 #### The challenge:
 Implementation of features similar to Tibia
