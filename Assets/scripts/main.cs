@@ -115,6 +115,45 @@ public class main : MonoBehaviour, IPointerClickHandler
     public Image imagemTetoEsquerdaCima;
     public Image imagemTetoDireita;
     public Image imagemTetoEsquerda;
+    public Image imagemAgua1;
+    public Image imagemAgua2;
+    public Image imagemAgua3;
+    public Image imagemAgua4;
+    public Image imagemAgua5;
+    public Image imagemAgua6;
+    public Image imagemAgua7;
+    public Image imagemAgua8;
+    public Image imagemAgua9;
+    public int teleportNum = 0;
+    public Image auxTeleport;
+    public Image imagemTeleport;
+    public Image imagemTeleport2;
+    public Image imagemTeleport3;
+    public Image imagemCaixa;
+    public Image imagemLixo;
+    public Image imagemSacola;
+    public Image imagemBuracoNoTeto;
+    public Image imagemBuracoAberto;
+    public Image imagemBuracoFechado;
+    public Image imagemNPC;
+    public Image imagemSnake;
+    public Image imagemSnakeAtacando;
+    public Image imagemSnakeMorta;
+    public Image imagemMonstroMorto;
+    public Image imagemDragon;
+    public Image imagemDragonAtacando;
+    public Image imagemMammoth;
+    public Image imagemMammothAtacando;
+    public Image imagemSpider;
+    public Image imagemSpiderAtacando;
+    public Image imagemOrcShaman;
+    public Image imagemOrcShamanAtacando;
+    public bool flagAudio = false;
+    public int numAudio = 0;
+    public AudioSource audioMain;
+    public AudioSource audioCaverna;
+    public AudioSource audioCidade;
+    public AudioSource audioFloresta;
     public int[] posicaoDoPersonagem = new int[] {4,7};
     public int[] moverPersonagem = new int[] {0,0};
 
@@ -225,7 +264,39 @@ public class main : MonoBehaviour, IPointerClickHandler
         imagemTetoCima.enabled =
         imagemTetoEsquerdaCima.enabled =
         imagemTetoDireita.enabled =
-        imagemTetoEsquerda.enabled = false;
+        imagemTetoEsquerda.enabled =
+        imagemAgua1.enabled =
+        imagemAgua2.enabled =
+        imagemAgua3.enabled =
+        imagemAgua4.enabled =
+        imagemAgua5.enabled =
+        imagemAgua6.enabled =
+        imagemAgua7.enabled =
+        imagemAgua8.enabled =
+        imagemAgua9.enabled =
+        auxTeleport.enabled =
+        imagemTeleport.enabled =
+        imagemTeleport2.enabled =
+        imagemTeleport3.enabled =
+        imagemCaixa.enabled =
+        imagemLixo.enabled =
+        imagemSacola.enabled =
+        imagemBuracoNoTeto.enabled =
+        imagemBuracoAberto.enabled =
+        imagemBuracoFechado.enabled =
+        imagemNPC.enabled =
+        imagemSnake.enabled =
+        imagemSnakeAtacando.enabled =
+        imagemSnakeMorta.enabled =
+        imagemMonstroMorto.enabled =
+        imagemDragon.enabled =
+        imagemDragonAtacando.enabled =
+        imagemMammoth.enabled =
+        imagemMammothAtacando.enabled =
+        imagemSpider.enabled =
+        imagemSpiderAtacando.enabled =
+        imagemOrcShaman.enabled =
+        imagemOrcShamanAtacando.enabled = false;
     }
 
     // Update is called once per frame
@@ -240,7 +311,46 @@ public class main : MonoBehaviour, IPointerClickHandler
                 color = false;
             }
 
+            if(teleportNum == 0){
+                auxTeleport = imagemTeleport;
+                teleportNum++;
+            }else if(teleportNum == 1){
+                auxTeleport = imagemTeleport2;
+                teleportNum++;
+            }else if(teleportNum == 2){
+                auxTeleport = imagemTeleport3;
+                teleportNum++;
+            }else if(teleportNum == 3){
+                auxTeleport = imagemTeleport2;
+                teleportNum = 0;
+            }
+
             desenharMapa();
+
+            if(flagAudio){
+                if(numAudio != 1 && posicaoDoPersonagem[0] < 44){
+                    audioMain.Stop();
+                    audioCaverna.Stop();
+                    audioCidade.Stop();
+                    audioFloresta.Stop();
+                    audioCaverna.Play(0);
+                    numAudio = 1;
+                }else if(numAudio != 2 && posicaoDoPersonagem[0] >= 44 && posicaoDoPersonagem[0] <= 55){
+                    audioMain.Stop();
+                    audioCaverna.Stop();
+                    audioCidade.Stop();
+                    audioFloresta.Stop();
+                    audioCidade.Play(0);
+                    numAudio = 2;
+                }else if(numAudio != 3 && posicaoDoPersonagem[0] > 55){
+                    audioMain.Stop();
+                    audioCaverna.Stop();
+                    audioCidade.Stop();
+                    audioFloresta.Stop();
+                    audioFloresta.Play(0);
+                    numAudio = 3;
+                }
+            }
 
             date1 = DateTime.Now.AddSeconds(1);
         }
@@ -635,9 +745,12 @@ public class main : MonoBehaviour, IPointerClickHandler
         imagem90.enabled =
         imagem91.enabled =
         imagemPersonagem.enabled = true;
+
+        flagAudio = true;
     }
 
     public void desenharMapa(){
+        /*
         int[,] matrizDoMapa = new int[,] {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -648,25 +761,152 @@ public class main : MonoBehaviour, IPointerClickHandler
             {1,1,1,1,1,1,5,5,5,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+        }*/
+
+        int[,] matrizDoMapa = new int[,] {
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6, 0, 0,16, 4, 1, 6, 0,16, 0, 0, 0, 0, 0, 0,33, 0, 0,33, 0,33, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6, 0, 0,19, 4, 1, 6, 0, 0, 0, 0, 0,33, 0, 0, 0, 0,33, 0, 0, 0,33, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,20, 0, 0, 4, 1, 6,20, 0, 0, 0, 0, 0, 0, 0,33, 0, 0,33, 0,33, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6, 0,18,18, 4, 1, 6, 0, 0, 0, 0, 0, 0, 0, 0,30, 0, 0,30, 0,30, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6, 0,17,24, 4, 1, 6,20, 0, 0, 0, 0,30, 0, 0, 0, 0,30, 0, 0, 0,30, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,21,20,18, 4, 1, 6,21, 0, 0, 0, 0, 0, 0, 0,30, 0, 0,30, 0,30, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,24,17,24, 4, 1, 6, 0, 0, 0, 0, 0, 0, 0, 0,27, 0, 0,27, 0,27, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,18, 0,17, 4, 1, 6,21, 0, 0, 0, 0,27, 0, 0, 0, 0,27, 0, 0, 0,27, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,18,21,20, 4, 1, 6,20, 0, 0, 0, 0, 0, 0, 0,27, 0, 0,27, 0,27, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 2, 3, 3, 3, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,18,24,18, 4, 1, 6, 0, 0, 0, 0, 0, 0, 0, 0,24, 0, 0,24, 0,24, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,24,17,20, 4, 1, 6, 0,20, 0, 0, 0,24, 0, 0, 0, 0,24, 0, 0, 0,24, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 6,18,24,21, 4, 1, 6,21, 0, 0, 0, 0, 0, 0, 0,24, 0, 0,24, 0,24, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,10, 7, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,10, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0,19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 7,15,19,17,17,17,17,27,18,19,17,17,17,17,24,18,19,17,17,17,30,18,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,23, 0,22, 0, 0, 0, 0,22, 0, 0, 0, 0, 0, 0, 0, 0,11, 7,15,17,17,27,17,17,17,30,17,17,17,24,17,17,27,17,17,30,17,17,30,17,19,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,13,13, 0, 0,11, 7,15,17,24,18,17,17,27,18,17,17,30,18,17,24,18,17,27,18,17,30,18,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,18,18, 0, 0, 0, 0, 0, 0, 0,18,18,11, 7,15, 0, 0,11, 7,15,17,17,27,17,17,17,30,17,17,17,24,17,17,27,17,17,30,17,17,30,17, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,30,17, 0, 0, 0, 0, 0, 0, 0,17,27,11, 7,15, 0, 0,11, 7,15,17,24,18,17,17,27,18,17,17,30,18,17,24,18,17,27,18,17,30,18,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,18,18, 0, 0, 0, 0, 0, 0, 0,18,18,11, 7,15, 0, 0,11, 7,15,17,17,27,17,17,17,30,17,17,17,24,17,17,27,17,17,30,17,17,27,17,19,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 7,15, 0, 0,11, 7,15,17,24,18,17,17,27,18,17,17,30,18,17,24,18,17,27,18,17,30,18,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,18, 0,18, 0,18, 0,18, 0,18, 0,18,11, 7,15, 0, 0,11, 7,15,17,17,27,17,17,17,30,17,17,17,24,17,17,27,17,17,30,17,17,30,17, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,30,17,30,17,33,17,33,17,27,17,27,11, 7,15,17,17, 9, 9, 9,17,24,18,17,17,27,18,17,17,30,18,17,24,18,17,27,18,17,30,18,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,30,17,30,17,33,17,33,17,27,17,27,11, 7,15, 0, 0, 0, 0,17,17,17,27,17,17,17,30,17,17,17,24,17,17,27,17,17,30,17,17,24,17,19,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15,30,30,30,18,33,33,33,18,27,27,27,11, 7,15, 0, 0, 0, 0,17,17,24,18,19,17,17,17,17,17,30,18,19,17,17,17,27,18,19,17,17,17,18,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,14,13,13,13,13,13,13,13,13,13,13,13,12, 7,15, 0, 0, 0, 0,11,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,15, 0, 0, 0, 0,11, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0,11, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,10, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0,33, 0, 0, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7,14,13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7,13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13,13, 0, 0,13, 0, 0, 0, 0, 0, 0, 0, 0, 0,33, 0, 0, 0, 0,33, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7,13,13, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7,13, 0, 0,36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 0,33, 0, 0, 0, 0, 0, 0, 0,33, 0, 0,33, 0, 0,11, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7,13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,13, 7, 7, 7, 7, 7,19, 0, 0, 0, 0, 0,33, 0, 0, 0, 0, 0, 0, 0, 0,11, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7,13, 0, 0,33, 0, 0, 0, 0, 0, 0, 0,33, 0, 0,19,11, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13, 7, 7, 7, 7, 7, 7, 7,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
+{ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
         };
 
-        if(moverPersonagem[1] < 0 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 0){
+        if(moverPersonagem[1] < 0 && (matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 0 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 16 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 17 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 20 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 22)){
+            if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] != 17 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x-25, imagemPersonagem.rectTransform.anchoredPosition.y+25);
+            }else if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] == 17 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] != 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x+25, imagemPersonagem.rectTransform.anchoredPosition.y-25);
+            }
+            if(matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] - 1)] == 16){
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 40;
+                posicaoDoPersonagem[1] = posicaoDoPersonagem[1] - 1;
+                moverPersonagem[1] = 0;
+            }else{
+                posicaoDoPersonagem[1] = posicaoDoPersonagem[1] - 1;
+                moverPersonagem[1] = moverPersonagem[1] + 1;
+            }
             imagemPersonagem.sprite = imagemPersonagemEsquerda.sprite;
-            posicaoDoPersonagem[1] = posicaoDoPersonagem[1] - 1;
-            moverPersonagem[1] = moverPersonagem[1] + 1;
-        }else if(moverPersonagem[1] > 0 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 0){
+        }else if(moverPersonagem[1] > 0 && (matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 0 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 16 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 17 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 20 || matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 22)){
+            if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] != 17 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x-25, imagemPersonagem.rectTransform.anchoredPosition.y+25);
+            }else if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] == 17 && matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] != 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x+25, imagemPersonagem.rectTransform.anchoredPosition.y-25);
+            }
+            if(matrizDoMapa[posicaoDoPersonagem[0],(posicaoDoPersonagem[1] + 1)] == 16){
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 40;
+                posicaoDoPersonagem[1] = posicaoDoPersonagem[1] + 1;
+                moverPersonagem[1] = 0;
+            }else{
+                posicaoDoPersonagem[1] = posicaoDoPersonagem[1] + 1;
+                moverPersonagem[1] = moverPersonagem[1] - 1;
+            }
             imagemPersonagem.sprite = imagemPersonagemDireita.sprite;
-            posicaoDoPersonagem[1] = posicaoDoPersonagem[1] + 1;
-            moverPersonagem[1] = moverPersonagem[1] - 1;
-        }else if(moverPersonagem[0] < 0 && matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 0){
+        }else if(moverPersonagem[0] < 0 && (matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 0 || matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 16 || matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 17 || matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 20 || matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 22)){
+            if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] != 17 && matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x-25, imagemPersonagem.rectTransform.anchoredPosition.y+25);
+            }else if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] == 17 && matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] != 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x+25, imagemPersonagem.rectTransform.anchoredPosition.y-25);
+            }
+            if(matrizDoMapa[(posicaoDoPersonagem[0] - 1),posicaoDoPersonagem[1]] == 16){
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 39;
+                moverPersonagem[1] = 0;
+            }else{
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] - 1;
+                moverPersonagem[0] = moverPersonagem[0] + 1;
+            }
             imagemPersonagem.sprite = imagemPersonagemCostas.sprite;
-            posicaoDoPersonagem[0] = posicaoDoPersonagem[0] - 1;
-            moverPersonagem[0] = moverPersonagem[0] + 1;
-        }else if(moverPersonagem[0] > 0 && matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 0){
+        }else if(moverPersonagem[0] > 0 && (matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 0 || matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 16 || matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 17 || matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 20 || matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 22)){
+            if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] != 17 && matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x-25, imagemPersonagem.rectTransform.anchoredPosition.y+25);
+            }else if(matrizDoMapa[posicaoDoPersonagem[0],posicaoDoPersonagem[1]] == 17 && matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] != 17){
+                imagemPersonagem.rectTransform.anchoredPosition = new Vector2(imagemPersonagem.rectTransform.anchoredPosition.x+25, imagemPersonagem.rectTransform.anchoredPosition.y-25);
+            }
+            if(matrizDoMapa[(posicaoDoPersonagem[0] + 1),posicaoDoPersonagem[1]] == 16){
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 41;
+                moverPersonagem[1] = 0;
+            }else{
+                posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 1;
+                moverPersonagem[0] = moverPersonagem[0] - 1;
+            }
             imagemPersonagem.sprite = imagemPersonagemFrente.sprite;
-            posicaoDoPersonagem[0] = posicaoDoPersonagem[0] + 1;
-            moverPersonagem[0] = moverPersonagem[0] - 1;
         }else{
+            if(moverPersonagem[1] < 0){
+                imagemPersonagem.sprite = imagemPersonagemEsquerda.sprite;
+            }else if(moverPersonagem[1] > 0){
+                imagemPersonagem.sprite = imagemPersonagemDireita.sprite;
+            }else if(moverPersonagem[0] < 0){
+                imagemPersonagem.sprite = imagemPersonagemCostas.sprite;
+            }else if(moverPersonagem[0] > 0){
+                imagemPersonagem.sprite = imagemPersonagemFrente.sprite;
+            }
+
             moverPersonagem[0] = 0;
             moverPersonagem[1] = 0;
         }
@@ -699,6 +939,102 @@ public class main : MonoBehaviour, IPointerClickHandler
                         break;
                     case 6:
                         auxImagem = imagemTetoEsquerda;
+                        break;
+                    case 7:
+                        auxImagem = imagemAgua1;
+                        break;
+                    case 8:
+                        auxImagem = imagemAgua2;
+                        break;
+                    case 9:
+                        auxImagem = imagemAgua3;
+                        break;
+                    case 10:
+                        auxImagem = imagemAgua4;
+                        break;
+                    case 11:
+                        auxImagem = imagemAgua5;
+                        break;
+                    case 12:
+                        auxImagem = imagemAgua6;
+                        break;
+                    case 13:
+                        auxImagem = imagemAgua7;
+                        break;
+                    case 14:
+                        auxImagem = imagemAgua8;
+                        break;
+                    case 15:
+                        auxImagem = imagemAgua9;
+                        break;
+                    case 16:
+                        auxImagem = auxTeleport;
+                        break;
+                    case 17:
+                        auxImagem = imagemCaixa;
+                        break;
+                    case 18:
+                        auxImagem = imagemLixo;
+                        break;
+                    case 19:
+                        auxImagem = imagemSacola;
+                        break;
+                    case 20:
+                        auxImagem = imagemBuracoNoTeto;
+                        break;
+                    case 21:
+                        auxImagem = imagemBuracoAberto;
+                        break;
+                    case 22:
+                        auxImagem = imagemBuracoFechado;
+                        break;
+                    case 23:
+                        auxImagem = imagemNPC;
+                        break;
+                    case 24:
+                        auxImagem = imagemSnake;
+                        break;
+                    case 25:
+                        auxImagem = imagemSnakeAtacando;
+                        break;
+                    case 26:
+                        auxImagem = imagemSnakeMorta;
+                        break;
+                    case 27:
+                        auxImagem = imagemDragon;
+                        break;
+                    case 28:
+                        auxImagem = imagemDragonAtacando;
+                        break;
+                    case 29:
+                        auxImagem = imagemMonstroMorto;
+                        break;
+                    case 30:
+                        auxImagem = imagemMammoth;
+                        break;
+                    case 31:
+                        auxImagem = imagemMammothAtacando;
+                        break;
+                    case 32:
+                        auxImagem = imagemMonstroMorto;
+                        break;
+                    case 33:
+                        auxImagem = imagemSpider;
+                        break;
+                    case 34:
+                        auxImagem = imagemSnakeAtacando;
+                        break;
+                    case 35:
+                        auxImagem = imagemMonstroMorto;
+                        break;
+                    case 36:
+                        auxImagem = imagemOrcShaman;
+                        break;
+                    case 37:
+                        auxImagem = imagemOrcShamanAtacando;
+                        break;
+                    case 38:
+                        auxImagem = imagemMonstroMorto;
                         break;
                 }
 
